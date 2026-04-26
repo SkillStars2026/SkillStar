@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+  body { 
+    background-color: #1a1a1a; 
+    color: #d8b4fe; 
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+  }
+  .elevator-container { 
+    border: 3px solid #9333ea; 
+    padding: 40px; 
+    text-align: center; 
+    border-radius: 20px;
+    box-shadow: 0 0 25px #7e22ce;
+    background: rgba(0, 0, 0, 0.8);
+  }
+  .floor-display { 
+    font-size: 5rem; 
+    color: #facc15; 
+    margin-bottom: 20px;
+    text-shadow: 0 0 10px #facc15;
+  }
+  button {
+    background-color: #7e22ce;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  button:hover {
+    background-color: #9333ea;
+    box-shadow: 0 0 15px #d8b4fe;
+  }
+</style>
+</head>
+<body>
+
+<div class="elevator-container">
+  <p style="letter-spacing: 3px;">SKILL STAR STATUS</p>
+  <div class="floor-display" id="floorNum">1</div>
+  <p>ASCENDING TO NEXT LEVEL</p>
+  <button onclick="changeFloor()">Press to Ascend</button>
+</div>
+
+<script>
+  let currentFloor = 1;
+  function changeFloor() {
+    currentFloor++;
+    document.getElementById('floorNum').innerText = currentFloor;
+    console.log("Ascending to level: " + currentFloor);
+  }
+</script>
+
+</body>
+</html>
