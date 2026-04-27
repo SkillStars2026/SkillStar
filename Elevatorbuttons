@@ -1,64 +1,99 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<style>
-  body { 
-    background-color: #1a1a1a; 
-    color: #d8b4fe; 
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-  }
-  .elevator-container { 
-    border: 3px solid #9333ea; 
-    padding: 40px; 
-    text-align: center; 
-    border-radius: 20px;
-    box-shadow: 0 0 25px #7e22ce;
-    background: rgba(0, 0, 0, 0.8);
-  }
-  .floor-display { 
-    font-size: 5rem; 
-    color: #facc15; 
-    margin-bottom: 20px;
-    text-shadow: 0 0 10px #facc15;
-  }
-  button {
-    background-color: #7e22ce;
-    color: white;
-    border: none;
-    padding: 15px 30px;
-    font-size: 1.2rem;
-    border-radius: 50px;
-    cursor: pointer;
-    transition: 0.3s;
-  }
-  button:hover {
-    background-color: #9333ea;
-    box-shadow: 0 0 15px #d8b4fe;
-  }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skill Star Ascending</title>
+    <style>
+        body {
+            background-color: #0f0a1a; /* Deep purple-black */
+            color: #d8b4fe; /* Soft purple text */
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        .panel {
+            background: rgba(20, 10, 30, 0.9);
+            border: 4px solid #9333ea;
+            padding: 50px;
+            border-radius: 30px;
+            text-align: center;
+            box-shadow: 0 0 40px #7e22ce, inset 0 0 20px #581c87;
+            width: 300px;
+        }
+
+        .brand {
+            letter-spacing: 5px;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+            color: #a78bfa;
+        }
+
+        .display {
+            font-size: 9rem;
+            color: #facc15; /* Golden Yellow */
+            font-weight: bold;
+            margin: 10px 0;
+            text-shadow: 0 0 20px rgba(250, 204, 21, 0.5);
+        }
+
+        .status {
+            margin-bottom: 30px;
+            font-style: italic;
+            font-size: 1.1rem;
+        }
+
+        button {
+            background: linear-gradient(145deg, #9333ea, #7e22ce);
+            color: white;
+            border: none;
+            padding: 20px 40px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: transform 0.1s, box-shadow 0.3s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+        }
+
+        button:hover {
+            box-shadow: 0 0 25px #d8b4fe;
+            transform: scale(1.05);
+        }
+
+        button:active {
+            transform: scale(0.95);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.8);
+        }
+    </style>
 </head>
 <body>
 
-<div class="elevator-container">
-  <p style="letter-spacing: 3px;">SKILL STAR STATUS</p>
-  <div class="floor-display" id="floorNum">1</div>
-  <p>ASCENDING TO NEXT LEVEL</p>
-  <button onclick="changeFloor()">Press to Ascend</button>
-</div>
+    <div class="panel">
+        <div class="brand">SKILL STAR</div>
+        <div class="display" id="floorNumber">1</div>
+        <div class="status" id="statusText">READY TO ASCEND</div>
+        <button onclick="goUp()">ASCEND</button>
+    </div>
 
-<script>
-  let currentFloor = 1;
-  function changeFloor() {
-    currentFloor++;
-    document.getElementById('floorNum').innerText = currentFloor;
-    console.log("Ascending to level: " + currentFloor);
-  }
-</script>
+    <script>
+        let floor = 1;
+        function goUp() {
+            floor++;
+            document.getElementById('floorNumber').innerText = floor;
+            document.getElementById('statusText').innerText = "ASCENDING...";
+            
+            // Just a little flair: it changes back after a second
+            setTimeout(() => {
+                document.getElementById('statusText').innerText = "LEVEL REACHED";
+            }, 1000);
+        }
+    </script>
 
 </body>
 </html>
