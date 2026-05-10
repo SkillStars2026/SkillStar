@@ -4,70 +4,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Skill Star - Floor 5</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
     <style>
-        body { margin: 0; background-color: #0d0d2b; color: white; font-family: sans-serif; overflow: hidden; height: 100vh; display: flex; flex-direction: column; }
-        
+        body { margin: 0; background-color: #0d0d2b; color: white; font-family: 'Montserrat', sans-serif; overflow: hidden; height: 100vh; display: flex; flex-direction: column; }
         #elevator-container { flex: 1; position: relative; display: flex; justify-content: center; align-items: center; }
-
-        /* The Background Montage */
-        #montage-screen {
-            position: absolute; width: 100%; height: 100%;
-            background-size: contain; background-repeat: no-repeat; background-position: center;
-            transition: background-image 0.5s ease;
-        }
-
-        /* The Final "SkillStar Talent" Screen */
-        #handoff-screen {
-            display: none; position: absolute; z-index: 100;
-            width: 100%; height: 100%; background-color: #0d0d2b;
-            flex-direction: column; justify-content: center; align-items: center;
-        }
-
-        #status-text { color: #FFD700; text-align: center; font-size: 1.5rem; margin-bottom: 20px; padding: 0 10px; }
-
-        .gold-button {
-            background: linear-gradient(#FFD700, #B8860B); color: black;
-            border: 2px solid white; padding: 15px 30px; font-weight: bold;
-            border-radius: 10px; font-size: 1.1rem;
-        }
+        #montage-screen { position: absolute; width: 100%; height: 100%; background-size: contain; background-repeat: no-repeat; background-position: center; transition: background-image 0.3s ease; }
+        #handoff-screen { display: none; position: absolute; z-index: 100; width: 100%; height: 100%; background-color: #0d0d2b; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
+        #status-text { color: #FFD700; font-size: 1.6rem; margin-bottom: 20px; padding: 0 20px; text-transform: uppercase; }
+        .jive-text { font-family: 'Brush Script MT', cursive; font-size: 1.8rem; color: #ff00ff; display: block; margin-top: 15px; text-transform: none; text-shadow: 0 0 10px #ff00ff; }
+        .gold-button { background: linear-gradient(#FFD700, #B8860B); color: black; border: 2px solid white; padding: 15px 30px; font-weight: bold; border-radius: 50px; font-size: 1.1rem; cursor: pointer; margin-top: 20px; }
     </style>
 </head>
 <body>
-
-<div id="elevator-container">
-    <div id="montage-screen"></div>
+    <div id="elevator-container">
+        <div id="montage-screen"></div>
         <div id="handoff-screen">
-        <div id="status-text">
-            THE STAGE IS WARM... THE FLOOR IS YOURS.<br>
-            <span style="font-family: 'Brush Script MT', cursive; font-size: 1.6rem; color: #ff00ff; display: block; margin-top: 15px; text-transform: none; letter-spacing: 1px;">
-                Go change those Jitters to Jives. Go Shine!
-            </span>
+            <div id="status-text">
+                THE STAGE IS WARM...<br>THE FLOOR IS YOURS.
+                <span class="jive-text">Go change those Jitters to Jives. Go Shine!</span>
+            </div>
+            <button class="gold-button">UPLOAD YOUR SKILL</button>
         </div>
-        <button class="gold-button">UPLOAD YOUR SKILL</button>
     </div>
-
-</div>
-
-<script>
-    // These names must match your GitHub files exactly!
-    const images = ['1000033446.png', '1000033447.jpg'];
-    let idx = 0;
-    const screen = document.getElementById('montage-screen');
-
-    // Change image every 2 seconds
-    const interval = setInterval(() => {
-        screen.style.backgroundImage = `url('${images[idx]}')`;
-        idx = (idx + 1) % images.length;
-    }, 2000);
-
-    // After 10 seconds, show the final screen
-    setTimeout(() => {
-        clearInterval(interval);
-        document.getElementById('handoff-screen').style.display = 'flex';
-    }, 10000);
-</script>
-
+    <script>
+        const images = ['1000033446.png', '1000033447.jpg'];
+        let idx = 0;
+        const screen = document.getElementById('montage-screen');
+        screen.style.backgroundImage = `url('${images[0]}')`;
+        const interval = setInterval(() => {
+            idx = (idx + 1) % images.length;
+            screen.style.backgroundImage = `url('${images[idx]}')`;
+        }, 1500);
+        setTimeout(() => {
+            clearInterval(interval);
+            document.getElementById('handoff-screen').style.display = 'flex';
+        }, 10000);
+    </script>
 </body>
 </html>
-
 
