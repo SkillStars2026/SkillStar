@@ -4,25 +4,58 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Skill Star - Floor 5</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
     <style>
-        body { margin: 0; background-color: #0d0d2b; color: white; font-family: 'Montserrat', sans-serif; overflow: hidden; height: 100vh; display: flex; flex-direction: column; }
+        body { margin: 0; background-color: #0d0d2b; color: white; font-family: 'Playfair Display', serif; overflow: hidden; height: 100vh; display: flex; flex-direction: column; }
         #elevator-container { flex: 1; position: relative; display: flex; justify-content: center; align-items: center; }
-        #montage-screen { position: absolute; width: 100%; height: 100%; background-size: contain; background-repeat: no-repeat; background-position: center; transition: background-image 0.3s ease; }
-        #handoff-screen { display: none; position: absolute; z-index: 100; width: 100%; height: 100%; background-color: #0d0d2b; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
-        #status-text { color: #FFD700; font-size: 1.6rem; margin-bottom: 20px; padding: 0 20px; text-transform: uppercase; }
-        .jive-text { font-family: 'Brush Script MT', cursive; font-size: 1.8rem; color: #ff00ff; display: block; margin-top: 15px; text-transform: none; text-shadow: 0 0 10px #ff00ff; }
-        .gold-button { background: linear-gradient(#FFD700, #B8860B); color: black; border: 2px solid white; padding: 15px 30px; font-weight: bold; border-radius: 50px; font-size: 1.1rem; cursor: pointer; margin-top: 20px; }
+        #montage-screen { position: absolute; width: 100%; height: 100%; background-size: contain; background-repeat: no-repeat; background-position: center; }
+        
+        #handoff-screen { 
+            display: none; position: absolute; z-index: 100; width: 100%; height: 100%; 
+            background-color: #0d0d2b; flex-direction: column; justify-content: center; 
+            align-items: center; text-align: center; 
+        }
+
+        /* Elegant Top Line */
+        #status-text { color: #FFD700; font-size: 1.6rem; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 3px; font-weight: 700; }
+
+        /* Jitters to Jives: Deep Purple with Gold Outline in elegant script */
+        .jive-text { 
+            font-family: 'Brush Script MT', cursive; 
+            font-size: 2.5rem; 
+            color: #800080; 
+            display: block; 
+            margin-top: 10px; 
+            text-transform: none; 
+            text-shadow: 
+                -1px -1px 0 #FFD700,  
+                 1px -1px 0 #FFD700,
+                -1px  1px 0 #FFD700,
+                 1px  1px 0 #FFD700,
+                 0 0 15px rgba(255, 215, 0, 0.5); 
+        }
+
+        .gold-button { 
+            background: linear-gradient(#FFD700, #B8860B); 
+            color: black; 
+            border: 2px solid white; 
+            padding: 15px 40px; 
+            font-weight: bold; 
+            border-radius: 10px; /* Slightly more square for elegance */
+            font-size: 1.2rem; 
+            cursor: pointer; 
+            margin-top: 40px; 
+            font-family: 'Playfair Display', serif;
+            text-transform: uppercase;
+        }
     </style>
 </head>
 <body>
     <div id="elevator-container">
         <div id="montage-screen"></div>
         <div id="handoff-screen">
-            <div id="status-text">
-                THE STAGE IS WARM...<br>THE FLOOR IS YOURS.
-                <span class="jive-text">Go change those Jitters to Jives. Go Shine!</span>
-            </div>
+            <div id="status-text">THE STAGE IS WARM... THE FLOOR IS YOURS.</div>
+            <span class="jive-text">Go change those Jitters to Jives. Go Shine!</span>
             <button class="gold-button">UPLOAD YOUR SKILL</button>
         </div>
     </div>
@@ -30,16 +63,20 @@
         const images = ['1000033446.png', '1000033447.jpg'];
         let idx = 0;
         const screen = document.getElementById('montage-screen');
+        const handoff = document.getElementById('handoff-screen');
+
         screen.style.backgroundImage = `url('${images[0]}')`;
+
         const interval = setInterval(() => {
             idx = (idx + 1) % images.length;
             screen.style.backgroundImage = `url('${images[idx]}')`;
         }, 1500);
+
         setTimeout(() => {
             clearInterval(interval);
-            document.getElementById('handoff-screen').style.display = 'flex';
+            screen.style.display = 'none';
+            handoff.style.display = 'flex';
         }, 10000);
     </script>
 </body>
 </html>
-
