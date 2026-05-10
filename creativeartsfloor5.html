@@ -16,45 +16,43 @@
             align-items: center; text-align: center; 
         }
 
-        /* Top Line: Smaller and more spaced out for a 'Boutique' feel */
         #status-text { 
-            color: #FFD700; 
-            font-size: 1.1rem; /* Shrunk down from 1.5rem */
-            margin-bottom: 8px; 
+            color: #d4af37; 
+            font-size: 0.9rem; 
+            margin-bottom: 5px; 
             text-transform: uppercase; 
-            letter-spacing: 5px; 
+            letter-spacing: 4px; 
             font-weight: 700; 
-            line-height: 1.8; 
-            opacity: 0.9; /* Slight transparency to make it softer */
+            line-height: 1.6; 
+            opacity: 0.8;
         }
 
-        /* Jitters to Jives: Smaller font and very soft 'Antique' glow */
+        /* Jitters to Jives: The 'Soft Spotlight' Glow */
         .jive-text { 
             font-family: 'Brush Script MT', cursive; 
-            font-size: 2.1rem; /* Shrunk down from 2.6rem */
+            font-size: 1.8rem; 
             color: #800080; 
             display: block; 
             margin-top: 5px; 
             text-transform: none; 
-            /* Softened 'Muted White' effect - using lower opacity */
+            /* This 'AntiqueWhite' glow mimics a soft light shining on the text */
             text-shadow: 
-                0 0 3px rgba(253, 245, 230, 0.4),  
-                0 0 10px rgba(253, 245, 230, 0.2); 
+                0 0 5px #fdf5e6,  /* The soft center light */
+                0 0 10px rgba(253, 245, 230, 0.4); /* The outer glow */
         }
 
         .gold-button { 
             background: linear-gradient(#FFD700, #B8860B); 
             color: black; 
-            border: 1px solid white; 
-            padding: 12px 30px; 
+            border: 1px solid rgba(255, 255, 255, 0.5); 
+            padding: 10px 25px; 
             font-weight: bold; 
-            border-radius: 8px; 
-            font-size: 1rem; /* Made the button text smaller too */
+            border-radius: 6px; 
+            font-size: 0.9rem; 
             cursor: pointer; 
-            margin-top: 35px; 
+            margin-top: 30px; 
             font-family: 'Playfair Display', serif;
             text-transform: uppercase;
-            letter-spacing: 1px;
         }
     </style>
 </head>
@@ -70,18 +68,14 @@
     <script>
         const images = ['1000033446.png', '1000033447.jpg'];
         images.forEach(src => { const img = new Image(); img.src = src; });
-
         let idx = 0;
         const screen = document.getElementById('montage-screen');
         const handoff = document.getElementById('handoff-screen');
-
         screen.style.backgroundImage = `url('${images[0]}')`;
-
         const interval = setInterval(() => {
             idx = (idx + 1) % images.length;
             screen.style.backgroundImage = `url('${images[idx]}')`;
         }, 1500);
-
         setTimeout(() => {
             clearInterval(interval);
             screen.style.display = 'none';
@@ -90,4 +84,5 @@
     </script>
 </body>
 </html>
+
 
