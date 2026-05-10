@@ -1,106 +1,82 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Skill Star - Floor 5 Arrival</title>
-    <style>
-        body { margin: 0; background-color: #0d0d2b; font-family: 'Arial', sans-serif; overflow: hidden; }
-        
-        #elevator-container {
-            width: 100vw;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-        }
-
-        /* The Montage Background */
-        #montage-screen {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background-size: cover;
-            background-position: center;
-            transition: background-image 0.5s ease-in-out;
-            filter: brightness(0.7);
-        }
-
-        /* The Final Handoff Screen (Initially Hidden) */
-        #handoff-screen {
-            display: none;
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: url('https://your-github-link/handoff_final.jpg') no-repeat center center;
-            background-size: cover;
-            text-align: center;
-            color: #FFD700; /* Gold */
-            flex-direction: column;
-            justify-content: flex-end;
-            padding-bottom: 50px;
-        }
-
-        .gold-button {
-            background: linear-gradient(to bottom, #FFD700, #B8860B);
-            border: 2px solid #FFF;
-            padding: 15px 30px;
-            font-weight: bold;
-            border-radius: 10px;
-            cursor: pointer;
-            box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
-            font-size: 1.2rem;
-        }
-
-        #status-text { margin-bottom: 20px; font-size: 1.5rem; text-shadow: 2px 2px #000; }
-    </style>
-</head>
-<body>
-
-<div id="elevator-container">
-    <div id="montage-screen"></div>
-    
-    <div id="handoff-screen">
-        <div id="status-text">"GENERATIONAL TALENT... <br> NOW THE FLOOR IS YOURS."</div>
-        <button class="gold-button" onclick="startUpload()">UPLOAD YOUR SKILL</button>
-    </div>
-</div>
-
-<script>
-    // Replace these with your actual GitHub image paths
-    const images = [
-        '1000033444.jpg', // The Blue/Purple Collage
-        '1000033446.png', // The Second Flash
-        'your_art_placeholder.jpg' // Any other art piece
-    ];
-
-    let currentIdx = 0;
-    const montageElement = document.getElementById('montage-screen');
-    const handoffElement = document.getElementById('handoff-screen');
-
-    // Start the 10-second montage
-    const montageInterval = setInterval(() => {
-        montageElement.style.backgroundImage = `url('${images[currentIdx]}')`;
-        currentIdx = (currentIdx + 1) % images.length;
-    }, 2000); // Changes image every 2 seconds
-
-    // The Finish Line (10 Seconds)
-    setTimeout(() => {
-        clearInterval(montageInterval);
-        montageElement.style.display = 'none';
-        handoffElement.style.display = 'flex';
-        
-        // Play the "CLACK" Sound
-        let audio = new Audio('clapperboard_clack.mp3');
-        audio.play();
-    }, 10000);
-
-    function startUpload() {
-        alert("Camera/Gallery Opening...");
-        // Logic for file selection goes here
+<style>
+    body { 
+        margin: 0; 
+        background-color: #0d0d2b; 
+        font-family: 'Arial', sans-serif; 
+        overflow: hidden; 
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+        width: 100vw;
     }
-</script>
+    
+    #elevator-container {
+        position: relative;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+    }
 
-</body>
-</html>
+    #montage-screen {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        /* 'contain' keeps the whole image visible on any screen */
+        background-size: contain; 
+        background-repeat: no-repeat;
+        background-position: center;
+        transition: background-image 0.5s ease-in-out;
+    }
+
+    #handoff-screen {
+        display: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(13, 13, 43, 0.9); /* Slight transparency */
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+        box-sizing: border-box;
+        z-index: 10;
+    }
+
+    #status-text { 
+        color: #FFD700; 
+        text-align: center;
+        text-shadow: 2px 2px 4px #000;
+        margin-bottom: 20px;
+    }
+
+    /* COMPUTER SCREEN SIZE */
+    @media (min-width: 768px) {
+        #status-text { font-size: 2.5rem; }
+        .gold-button { padding: 20px 40px; font-size: 1.5rem; }
+    }
+
+    /* PHONE SCREEN SIZE */
+    @media (max-width: 767px) {
+        #status-text { font-size: 1.2rem; }
+        .gold-button { padding: 15px 30px; font-size: 1rem; }
+    }
+
+    .gold-button {
+        background: linear-gradient(to bottom, #FFD700, #B8860B);
+        border: 2px solid #FFF;
+        font-weight: bold;
+        border-radius: 10px;
+        color: #000;
+        cursor: pointer;
+        box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+    }
+</style>
+
