@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+
+        <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -16,37 +17,45 @@
             align-items: center; text-align: center; 
         }
 
-        /* Elegant Top Line */
-        #status-text { color: #FFD700; font-size: 1.6rem; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 3px; font-weight: 700; }
+        /* Top Line: Smaller and more spaced out for a 'Boutique' feel */
+        #status-text { 
+            color: #FFD700; 
+            font-size: 1.1rem; /* Shrunk down from 1.5rem */
+            margin-bottom: 8px; 
+            text-transform: uppercase; 
+            letter-spacing: 5px; 
+            font-weight: 700; 
+            line-height: 1.8; 
+            opacity: 0.9; /* Slight transparency to make it softer */
+        }
 
-        /* Jitters to Jives: Deep Purple with Gold Outline in elegant script */
+        /* Jitters to Jives: Smaller font and very soft 'Antique' glow */
         .jive-text { 
             font-family: 'Brush Script MT', cursive; 
-            font-size: 2.5rem; 
+            font-size: 2.1rem; /* Shrunk down from 2.6rem */
             color: #800080; 
             display: block; 
-            margin-top: 10px; 
+            margin-top: 5px; 
             text-transform: none; 
+            /* Softened 'Muted White' effect - using lower opacity */
             text-shadow: 
-                -1px -1px 0 #FFD700,  
-                 1px -1px 0 #FFD700,
-                -1px  1px 0 #FFD700,
-                 1px  1px 0 #FFD700,
-                 0 0 15px rgba(255, 215, 0, 0.5); 
+                0 0 3px rgba(253, 245, 230, 0.4),  
+                0 0 10px rgba(253, 245, 230, 0.2); 
         }
 
         .gold-button { 
             background: linear-gradient(#FFD700, #B8860B); 
             color: black; 
-            border: 2px solid white; 
-            padding: 15px 40px; 
+            border: 1px solid white; 
+            padding: 12px 30px; 
             font-weight: bold; 
-            border-radius: 10px; /* Slightly more square for elegance */
-            font-size: 1.2rem; 
+            border-radius: 8px; 
+            font-size: 1rem; /* Made the button text smaller too */
             cursor: pointer; 
-            margin-top: 40px; 
+            margin-top: 35px; 
             font-family: 'Playfair Display', serif;
             text-transform: uppercase;
+            letter-spacing: 1px;
         }
     </style>
 </head>
@@ -54,13 +63,15 @@
     <div id="elevator-container">
         <div id="montage-screen"></div>
         <div id="handoff-screen">
-            <div id="status-text">THE STAGE IS WARM... THE FLOOR IS YOURS.</div>
+            <div id="status-text">THE STAGE IS WARM... <br>&mdash; THE FLOOR IS YOURS. &mdash;</div>
             <span class="jive-text">Go change those Jitters to Jives. Go Shine!</span>
             <button class="gold-button">UPLOAD YOUR SKILL</button>
         </div>
     </div>
     <script>
         const images = ['1000033446.png', '1000033447.jpg'];
+        images.forEach(src => { const img = new Image(); img.src = src; });
+
         let idx = 0;
         const screen = document.getElementById('montage-screen');
         const handoff = document.getElementById('handoff-screen');
