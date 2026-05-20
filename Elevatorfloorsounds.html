@@ -1,38 +1,95 @@
 
-​<!DOCTYPE html>
+​​<!DOCTYPE html>
 <html>
 <head>
 <title>Skill Star Elevator</title>
 <style>
-body { background-color: #0d001a; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; }
-.elevator-container { position: relative; }
-img { max-width: 100%; height: auto; display: block; }
+body { background-color: #0d001a; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; font-family: sans-serif; }
+​/* This container holds your background design /
+.elevator-wrapper {
+position: relative;
+width: 450px;
+height: 800px;
+background: url('1000034337.jpg') no-repeat center center;
+background-size: cover;
+border-radius: 12px;
+box-shadow: 0 0 20px rgba(138, 43, 226, 0.4);
+display: flex;
+flex-direction: column;
+justify-content: flex-end; / Pushes buttons to line up with your design rows /
+padding-bottom: 120px; / Adjusts where the bottom row starts */
+box-sizing: border-box;
+}
+​/* This creates a perfectly straight, even row for every floor /
+.floor-row {
+display: flex;
+justify-content: space-between;
+align-items: center;
+height: 55px; / Keeps every single row identical in size /
+margin: 4px 25px;
+padding: 0 15px;
+background: rgba(255, 255, 255, 0.03); / Subtly balances the row background */
+border-radius: 6px;
+cursor: pointer;
+transition: background 0.2s;
+}
+​.floor-row:hover {
+background: rgba(0, 191, 255, 0.15); /* Soft electric blue glow when hovering */
+}
+​.floor-text {
+color: #ffffff;
+font-size: 16px;
+font-weight: 600;
+letter-spacing: 0.5px;
+text-shadow: 0 0 5px rgba(255,255,255,0.3);
+}
+​.floor-icon-space {
+width: 40px; /* Keeps the right side perfectly square */
+height: 40px;
+}
 </style>
 </head>
 <body>
-​<div class="elevator-container">
-<img src="elevator_panel_design.jpg" usemap="#elevator-map" alt="Skill Star Elevator Panel">
-​<map name="elevator-map">
-<area shape="rect" coords="50,50,200,100" alt="Creative Arts" href="#" onclick="triggerFloor('creative_arts'); return false;">
-<area shape="rect" coords="50,120,200,170" alt="General Labor" href="#" onclick="triggerFloor('general_labor'); return false;">
-<area shape="rect" coords="50,190,200,240" alt="Tech Floor" href="#" onclick="triggerFloor('tech'); return false;">
-<area shape="rect" coords="50,260,200,310" alt="Customer Service" href="#" onclick="triggerFloor('customer_service'); return false;">
-<area shape="rect" coords="50,330,200,380" alt="The Kitchen" href="#" onclick="triggerFloor('kitchen'); return false;">
-</map>
+​<div class="elevator-wrapper">
+<div class="floor-row" onclick="triggerFloor('tech')">
+<span class="floor-text">Tech & Web Development</span>
+<div class="floor-icon-space"></div>
+</div>
+​<div class="floor-row" onclick="triggerFloor('creative_arts')">
+<span class="floor-text">Creative Arts & Design</span>
+<div class="floor-icon-space"></div>
+</div>
+​<div class="floor-row" onclick="triggerFloor('seasonal')">
+<span class="floor-text">Seasonal & Landscaping</span>
+<div class="floor-icon-space"></div>
+</div>
+​<div class="floor-row" onclick="triggerFloor('customer_service')">
+<span class="floor-text">Customer Service & Retail</span>
+<div class="floor-icon-space"></div>
+</div>
+​<div class="floor-row" onclick="triggerFloor('hospitality')">
+<span class="floor-text">Hospitality & Food Service</span>
+<div class="floor-icon-space"></div>
+</div>
+​<div class="floor-row" onclick="triggerFloor('general_labour')">
+<span class="floor-text">General Labour</span>
+<div class="floor-icon-space"></div>
+</div>
 </div>
 ​<script>
 function triggerFloor(floorName) {
 let audioFile = '';
 switch(floorName) {
-case 'kitchen': audioFile = 'yes_chef_sizzle.mp3'; break;
+case 'hospitality': audioFile = 'yes_chef_sizzle.mp3'; break;
 case 'customer_service': audioFile = 'grandma_hangup_drink.mp3'; break;
 case 'tech': audioFile = 'keyboard_chime.mp3'; break;
-case 'general_labor': audioFile = 'drill_hammer.mp3'; break;
+case 'general_labour': audioFile = 'drill_hammer.mp3'; break;
+case 'seasonal': audioFile = 'lawnmower_birds.mp3'; break;
 case 'creative_arts': audioFile = 'phantom_theatrical_chord.mp3'; break;
 }
 if(audioFile) {
 const audio = new Audio('assets/sounds/' + audioFile);
-audio.play().catch(e => console.log("Audio waiting for click."));
+audio.play().catch(e => console.log("Audio waiting for user interaction."));
 }
 }
 </script>
